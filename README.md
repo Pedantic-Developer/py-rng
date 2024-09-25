@@ -1,23 +1,22 @@
 # py-rng
 A fangame of Sol's RNG made entirely in Python.
 UwU
-## Needed Libraries
-now then,
-you would need the following libraries to run the game:
-random
-time
-os
-survey
-tabulate
-pickle
-sys
+## Installation
 
-uhh install them idk
+To play the game, first install the required libraries:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Playing the game
-I would suggest you play in your terminal, fullscreen ofc.
-After you install all the needed libraries(using pip or unless i figure out a way to do it for you),
-cd into the directory where you have stored the game and run it!
+After installing the prerequisites, you can launch the game by entering:
+```bash
+python finalrng.py
+```
+in your console.
 
-Enjoy??
-
+Make sure to be in the same directory as the game:
+```bash
+cd directory/where/thegame/isstored
+```
