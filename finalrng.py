@@ -22,6 +22,8 @@ cdDeviceCrafted = 0
 ldequipped = 0
 cddequipped = 0
 rollCooldown = 1.5
+hpearned = 0
+coinsearned = 0
 playerName = ""
 name = ""
 width = 40
@@ -215,7 +217,7 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
                     break
 
         elif ch == 4:
-            slot_machine()
+            vegas()
 
         elif ch == 8:
             display_credits()
@@ -420,7 +422,6 @@ def craft():
         return
 
 def equipment():
-    global ldequipped
     system("cls||clear")
     print("""\033[1m$$$$$$$$\                     $$\                                               $$\     
 $$  _____|                    \__|                                              $$ |    
@@ -433,12 +434,26 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
                 $$ |              $$ |                                                  
                 $$ |              $$ |                                                  
                 \__|              \__|                                                  \033[0m""")
-    print("LUCK DEVICE:")
-    print("\n")
+    print("EQUIPMENT:")
+    print("LUCK DEVICE")
     print("DEVICE OF THE WIND")
+    if cdDeviceCrafted == 0:
+        print("YOU DO NOT OWN THE DEVICE OF THE WIND!")
+    if luckDeviceCrafted == 0:
+        print("YOU DONT OWN THE LUCK DEVICE!")
 
-    if luckDeviceCrafted == 0 and cdDeviceCrafted == 0:
-        print("YOU HAVE NOT CRAFTED ANY OF THE DEVICES!")  
+    print("\n")
+
+    print("EQUIPPED:")
+    if ldequipped == 1:
+        print("Luck Device is Equipped!")
+    if cddequipped == 1:
+        print("Device of the Wind is Equipped!")
+
+    if ldequipped == 0 and cddequipped == 0:
+        print("None")  
+
+    print("\n")
 
     print("What would you like to use?")
 
@@ -457,6 +472,30 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
         cdDevice()
 
     if eh == 2:
+        return
+
+
+def vegas():
+    print("Vegas!!!!")
+    print("\n")
+    vch = survey.routines.select(
+        "What would you like to do?",
+        options = [
+            "SPIN THE REELS!",
+            "CHECK REWARDS EARNED",
+            "QUIT"
+        ],
+    )
+    if vch == 0:
+        slot_machine()
+    
+    if vch == 1:
+        print("So far you have won:")
+        print(f"COINS : {coinsearned}")
+        print(f"HEAVENLY I POTIONS : {hpearned}")
+        input("Press Enter to contionue.....")
+    
+    if vch == 2:
         return
 
 
@@ -761,32 +800,39 @@ def cdDevice():
     global rollCooldown
     global cddequipped
 
-    if cddequipped == 1:
-        print("Would you like to uneqip the device?")
-        ech = survey.routines.select(
-            options = [
-                "YES",
-                "NO"
-            ],
-        )
-        if ech == 0:
-            cddequipped = 0
-            print("You have unequipped the Device of the Wind")
-            sleep(2)
-            return
-        if ech == 1:
-            pass
+    if cdDeviceCrafted == 1:
+
+        if cddequipped == 1:
+            print("Would you like to uneqip the device?")
+            ech = survey.routines.select(
+                options = [
+                    "YES",
+                    "NO"
+                ],
+            )
+            if ech == 0:
+                cddequipped = 0
+                print("You have unequipped the Device of the Wind")
+                sleep(2)
+                return
+            if ech == 1:
+                pass
+
+        else:
+            print("You have equipped the Device of the Wind!")
+            cddequipped = 1
+            rollCooldown = 0.5
+            input("Press Enter to continue.....")
 
     else:
-        print("You have equipped the Device of the Wind!")
-        cddequipped == 1
-        rollCooldown = 0.5
+        print("You do not own the Device of the Wind!")
         input("Press Enter to continue.....")
         
 
 # MINIGAME
-
 def slot_machine():
+    global hpearned
+    global coinsearned
     """
     A simple slot machine mini-game.
     """
@@ -814,9 +860,12 @@ def slot_machine():
         print("Congratulations! You won! YOU HAVE RECEIVED A HEAVENLY POTION I AND SOME COINS AS YOUR REWARD!")
         hpCount += 1
         coinAmount += 200
+        hpearned += 1
+        coinsearned += 200
     elif reel1 == reel2 or reel2 == reel3 or reel1 == reel3:
         print("You got a small win! YOU HAVE RECEIVED SOME COINS AS YOUR REWARDS!")
         coinAmount += 100
+        coinsearned += 100
     else:
         print("Better luck next time!")
     
@@ -864,7 +913,10 @@ def save():
                 'ld': luckDeviceCrafted, 
                 'ldeq': ldequipped, 
                 'cd': cdDeviceCrafted, 
-                'cdeq': cddequipped}
+                'cdeq': cddequipped,
+                'vhp': hpearned,
+                'vco': coinsearned
+                }
     with open('savefile', 'wb') as f:
         pickle.dump(data, f)
     saveInventory()
@@ -884,6 +936,8 @@ def load():
     global luckDeviceCrafted
     global cdDeviceCrafted
     global cddequipped
+    global hpearned
+    global coinsearned
     with open('savefile', 'rb') as f:
         data = pickle.load(f)
         coinAmount = int(data["coinamount"])
@@ -896,6 +950,8 @@ def load():
         ldequipped = int(data["ldeq"])
         cdDeviceCrafted = int(data["cd"])
         cddequipped = int(data["cdeq"])
+        hpearned = int(data["vhp"])
+        coinsearned = int(data["vco"])
     loadInventory()
     print("LOADED SUCCESSFULLY")
 
