@@ -14,10 +14,11 @@ sys
 
 uhh install them idk
 
-#Playing the game
+# Playing the game
 I would suggest you play in your terminal, fullscreen ofc.
 After you install all the needed libraries(using pip or unless i figure out a way to do it for you),
 cd into the directory where you have stored the game and run it!
 
 Enjoy??
 
+UWUWUWUWUWUUWUWUWUWWUWUWUWUUWWUUWUWUWUWUWUWUW
