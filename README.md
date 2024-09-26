@@ -1,6 +1,6 @@
 # py-rng
 A fangame of Sol's RNG made entirely in Python.
-![Game Screenshot](/home/aakashkrishnasamy/github/py-rng/py-rng/py-rng.png)
+![Game Screenshot](/py-rng.png)
 
 
 ## Installation
