@@ -621,7 +621,7 @@ def roll():
 
     print("You Rolled", title)
 
-    saveload.add(title, 1)
+    inventory.add(title, 1)
     global rollCount
     rollCount += 1
     sleep(rollCooldown)
@@ -649,7 +649,7 @@ def hpI():
         print("You Rolled", title)
         global rollCount
         rollCount += 1
-        saveload.add(title, 1)
+        inventory.add(title, 1)
 
     if hpCount > 0:
         print("YOU USED ONE HEAVENLY I POTION AND:")
@@ -684,7 +684,7 @@ def hpII():
         rollCount += 1
         global hp2count
         hp2count -= 1
-        saveload.add(title, 1)
+        inventory.add(title, 1)
 
     if int(hp2count) > 0:
         print("YOU USED ONE HEAVENLY II POTION AND:")
@@ -716,7 +716,7 @@ def ob():
         print("You Rolled", title)
         global rollCount
         rollCount += 1
-        saveload.add(title, 1)
+        inventory.add(title, 1)
 
     if obCount > 0:
         print("YOU USED ONE OBLIVION POTION AND:")
@@ -797,7 +797,7 @@ def devMode():
             name = input(">")
             print(f"Quantity of {name}?")
             quantity = int(input(">"))
-            saveload.add(name, quantity)
+            inventory.add(name, quantity)
 
         elif choi == "iman":
             devInvEdit()
