@@ -21,7 +21,7 @@ pip install -r requirements.txt
 
 ```bash
 python -m pip -r requirements.txt
-
+```
 
 ## Playing the game
 After installing the prerequisites, you can launch the game by entering:
@@ -74,4 +74,4 @@ Full Inventory:
 
 it also features a crafting system, a potion storage menu and more!
 
-More features will be added upon request or if I come across one!
+More features will be added upon request!
