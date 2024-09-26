@@ -12,10 +12,16 @@ Clone the repository:
    ```
 
 To play the game, first install the required libraries:
+### For Linux:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt 
 ```
+### For Windows:
+
+```bash
+python -m pip -r requirements.txt
+
 
 ## Playing the game
 After installing the prerequisites, you can launch the game by entering:
@@ -30,6 +36,7 @@ python3 finalrng.py # For Linux
 in your console.
 
 Make sure to be in the same directory as the game:
+
 ```bash
 cd directory/where/thegame/isstored
 ```
@@ -58,8 +65,13 @@ An Inventory with a WIDE LIST OF AURAS!
 
 Full Inventory:
 [Game Screenshot](/screenshots/inventory.png)
+
 [Game Screenshot](/screenshots/inv2.png)
+
 [Game Screenshot](/screenshots/inv3.png)
+
 [Game Screenshot](/screenshots/inv4.png)
 
 it also features a crafting system, a potion storage menu and more!
+
+More features will be added upon request or if I come across one!
