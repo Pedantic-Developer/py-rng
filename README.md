@@ -1,6 +1,8 @@
 # py-rng
 A fangame of Sol's RNG made entirely in Python.
-![Game Screenshot](/home/aakashkrishnasamy/Pictures/py-rng.png)
+![Game Screenshot](/home/aakashkrishnasamy/github/py-rng/py-rng/py-rng.png)
+
+
 ## Installation
 Clone the repository:
  ```bash
@@ -17,7 +19,12 @@ pip install -r requirements.txt
 ## Playing the game
 After installing the prerequisites, you can launch the game by entering:
 ```bash
-python finalrng.py
+python finalrng.py # For Windows
+```
+or 
+
+```bash
+python3 finalrng.py # For Linux
 ```
 in your console.
 
