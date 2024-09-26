@@ -1,18 +1,9 @@
 import pickle
-import time
-from inventory import *
-import random
-import time
 from time import sleep
-import os
-from crafting import *
-from devices import *
-from minigames import *
-from weather import *
-from inventory import *
+import inventory
 
 rollCount = 0
-inventory = {}
+# inventory = {}
 coinAmount = 0
 hpCount = 0
 hp2count = 0
@@ -31,6 +22,7 @@ height = 10
 ch = ""
 currentWeather = ""
 
+
 def save():
     """Saves all current values of all variables to a savefile"""
     global coinAmount
@@ -42,22 +34,23 @@ def save():
     global data
     global ldequipped
     global deviceCrafted
-    data = {'hpcount':hpCount, 
-            'hp2count':hp2count,
-              'obcount':obCount, 
-              'rollcount':rollCount, 
-              'name':playerName, 
-              'coinamount':coinAmount,
-                'ld': luckDeviceCrafted, 
-                'ldeq': ldequipped, 
-                'cd': cdDeviceCrafted, 
-                'cdeq': cddequipped,
-                'vhp': hpearned,
-                'vco': coinsearned
-                }
-    with open('savefile', 'wb') as f:
+    data = {
+        "hpcount": hpCount,
+        "hp2count": hp2count,
+        "obcount": obCount,
+        "rollcount": rollCount,
+        "name": playerName,
+        "coinamount": coinAmount,
+        "ld": luckDeviceCrafted,
+        "ldeq": ldequipped,
+        "cd": cdDeviceCrafted,
+        "cdeq": cddequipped,
+        "vhp": hpearned,
+        "vco": coinsearned,
+    }
+    with open("savefile", "wb") as f:
         pickle.dump(data, f)
-    saveInventory()
+    inventory.saveInventory()
     print("YOU HAVE SAVED SUCCESSFULLY")
     sleep(2)
 
@@ -76,7 +69,7 @@ def load():
     global cddequipped
     global hpearned
     global coinsearned
-    with open('savefile', 'rb') as f:
+    with open("savefile", "rb") as f:
         data = pickle.load(f)
         coinAmount = int(data["coinamount"])
         hpCount = int(data["hpcount"])
@@ -90,7 +83,7 @@ def load():
         cddequipped = int(data["cdeq"])
         hpearned = int(data["vhp"])
         coinsearned = int(data["vco"])
-    loadInventory()
+    inventory.loadInventory()
     print("LOADED SUCCESSFULLY")
 
     sleep(2)

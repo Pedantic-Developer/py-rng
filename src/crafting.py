@@ -1,14 +1,9 @@
 #:D
 from time import sleep
 from os import system
-from devices import *
-from minigames import *
-from saveload import *
-from weather import *
-from inventory import *
+import inventory
 
 rollCount = 0
-inventory = {}
 coinAmount = 0
 hpCount = 0
 hp2count = 0
@@ -34,7 +29,7 @@ def hpIIcr():
     global coinAmount
     global inventory
     name = "CELESTIAL"
-    if hpCount >= 2 and editInventory(name, 2 , 2) and coinAmount >= 200:
+    if hpCount >= 2 and inventory.editInventory(name, 2, 2) and coinAmount >= 200:
         print("You have crafted: ONE HEAVENLY II POTION!")
         sleep(2)
         hp2count += 1
@@ -47,13 +42,14 @@ def hpIIcr():
         sleep(2)
         input("Press Enter to continue.....")
 
+
 def obcr():
     global coinAmount
     global hp2count
     global obCount
     global inventory
     name = "CHROMATIC"
-    if hp2count >= 5 and editInventory(name, 1, 1) and coinAmount >= 1000:
+    if hp2count >= 5 and inventory.editInventory(name, 1, 1) and coinAmount >= 1000:
         print("You have crafted: ONE OBLIVION POTION!")
         sleep(2)
         obCount += 1
@@ -79,15 +75,16 @@ def luckDeviceCr():
     else:
         system("cls|clear")
         name = "Divinus"
-        if editInventory(name, 100 ,100) and coinAmount >= 2000:
+        if inventory.editInventory(name, 100, 100) and coinAmount >= 2000:
             name = "Jade"
             coinAmount -= 2000
-            if editInventory(name ,20 ,20):
+            if inventory.editInventory(name, 20, 20):
                 name = "EXOTIC"
-                if editInventory(name, 10 ,10):
+                if inventory.editInventory(name, 10, 10):
                     print("You have crafeted the Luck Device!")
                     luckDeviceCrafted = 1
                     input("Press Enter to continue.....")
+
 
 def cdDeviceCr():
     global cdDeviceCrafted
@@ -101,13 +98,12 @@ def cdDeviceCr():
     else:
         system("cls|clear")
         name = "Wind"
-        if editInventory(name, 150 , 150) and coinAmount >= 4000:
+        if inventory.editInventory(name, 150, 150) and coinAmount >= 4000:
             name = "Stormal"
             coinAmount -= 4000
-            if editInventory(name, 30, 30):
+            if inventory.editInventory(name, 30, 30):
                 name = "Stormal : HURRICANE"
-                if editInventory(name,15 ,15):
+                if inventory.editInventory(name, 15, 15):
                     print("You have crafted the Device of the Wind")
                     cdDeviceCrafted = 1
                     input("Press Enter to continue.....")
-    

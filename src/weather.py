@@ -1,12 +1,6 @@
 import random
-import time
 from time import sleep
-import os
-from crafting import *
-from devices import *
-from minigames import *
-from saveload import *
-from inventory import *
+
 rollCount = 0
 inventory = {}
 coinAmount = 0
@@ -26,6 +20,8 @@ width = 40
 height = 10
 ch = ""
 currentWeather = ""
+
+
 def weatherChange():
     global currentWeather
     w = False
@@ -54,7 +50,9 @@ def weather():
         currentWeather = "WINDY"
 
     elif b == 2:
-        print("SNOWY: COLD WHITE SNOW COVERS YOUR SURROUNDINGS, WAIT IS THE SNOW YELLOW???!!!")
+        print(
+            "SNOWY: COLD WHITE SNOW COVERS YOUR SURROUNDINGS, WAIT IS THE SNOW YELLOW???!!!"
+        )
         currentWeather = "SNOWY"
 
     elif b == 3:
@@ -62,7 +60,9 @@ def weather():
         currentWeather = "RAINY"
 
     elif b == 4:
-        print("SUNNY: IT IS NICE AND BRIGHT, YOU WOULD ENJOY IT MORE IF YOU COULD STOP SWEATING SO MUCH.")
+        print(
+            "SUNNY: IT IS NICE AND BRIGHT, YOU WOULD ENJOY IT MORE IF YOU COULD STOP SWEATING SO MUCH."
+        )
         currentWeather = "SUNNY"
 
     sleep(1)

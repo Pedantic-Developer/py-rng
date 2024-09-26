@@ -3,20 +3,19 @@ import time
 from time import sleep
 from os import system
 import survey._routines
-from tabulate import tabulate
 import os
 import sys
 import survey
 
-from crafting import *
-from devices import *
-from minigames import *
-from saveload import *
-from weather import *
-from inventory import *
+import saveload
+import crafting
+import inventory
+import devices
+import minigames
+import weather
+
 
 rollCount = 0
-inventory = {}
 coinAmount = 0
 hpCount = 0
 hp2count = 0
@@ -38,52 +37,146 @@ currentWeather = ""
 # TITLES + POTION TITLES
 
 titles = {
-    'Common': ['Common', 'Uncommon', 'Rare', 'Divinus', 'Crystallised', 'Ash', 'Wind', 'Magnetic', 'Siderum', 'Hazard'],
-    'Uncommon': ['Aquatic', 'Gravitational', 'Quartz', 'Lost Soul', 'Jade', 'Bounded', 'StarRider', 'Stormal', 'Hazard : RAYS'],
-    'Rare': ['CELESTIAL', 'GALAXY', 'ELECTRIC', 'ARCANE', 'VIRTUAL', 'ASTRAL', 'Stormal : HURRICANE', 'Bounded : UNBOUND', 'EXOTIC', 'TWILIGHT'],
-    'Legendary': ['HYPER - VOLT', 'STARSCOURGE', 'SAILOR', 'MATRIX', 'CHROMATIC', 'ETHEREAL', 'TWILIGHT : IRIDESCENT MEMORY'],
-    'Mythical': ['ARCHANGEL', 'BLOODLUST', 'IMPEACHED', 'ABYSSALHUNTER', 'SAILOR : DUTCHMAN', 'EXOTIC : APEX', 'CHROMATIC : GENESIS', 'STARSCOURGE : RADIANT', 'MATRIX : OVERDRIVE' ]
+    "Common": [
+        "Common",
+        "Uncommon",
+        "Rare",
+        "Divinus",
+        "Crystallised",
+        "Ash",
+        "Wind",
+        "Magnetic",
+        "Siderum",
+        "Hazard",
+    ],
+    "Uncommon": [
+        "Aquatic",
+        "Gravitational",
+        "Quartz",
+        "Lost Soul",
+        "Jade",
+        "Bounded",
+        "StarRider",
+        "Stormal",
+        "Hazard : RAYS",
+    ],
+    "Rare": [
+        "CELESTIAL",
+        "GALAXY",
+        "ELECTRIC",
+        "ARCANE",
+        "VIRTUAL",
+        "ASTRAL",
+        "Stormal : HURRICANE",
+        "Bounded : UNBOUND",
+        "EXOTIC",
+        "TWILIGHT",
+    ],
+    "Legendary": [
+        "HYPER - VOLT",
+        "STARSCOURGE",
+        "SAILOR",
+        "MATRIX",
+        "CHROMATIC",
+        "ETHEREAL",
+        "TWILIGHT : IRIDESCENT MEMORY",
+    ],
+    "Mythical": [
+        "ARCHANGEL",
+        "BLOODLUST",
+        "IMPEACHED",
+        "ABYSSALHUNTER",
+        "SAILOR : DUTCHMAN",
+        "EXOTIC : APEX",
+        "CHROMATIC : GENESIS",
+        "STARSCOURGE : RADIANT",
+        "MATRIX : OVERDRIVE",
+    ],
 }
 hp1titles = {
-    'Uncommon': ['Aquatic', 'Gravitational', 'Quartz','Jade', 'Bounded', 'StarRider', 'Stormal', 'Hazard : RAYS'],
-    'Rare': ['CELESTIAL', 'GALAXY', 'ELECTRIC', 'ARCANE', 'VIRTUAL', 'ASTRAL', 'Stormal : HURRICANE', 'Bounded : UNBOUND', 'EXOTIC']
+    "Uncommon": [
+        "Aquatic",
+        "Gravitational",
+        "Quartz",
+        "Jade",
+        "Bounded",
+        "StarRider",
+        "Stormal",
+        "Hazard : RAYS",
+    ],
+    "Rare": [
+        "CELESTIAL",
+        "GALAXY",
+        "ELECTRIC",
+        "ARCANE",
+        "VIRTUAL",
+        "ASTRAL",
+        "Stormal : HURRICANE",
+        "Bounded : UNBOUND",
+        "EXOTIC",
+    ],
 }
 hp2titles = {
-    'Rare': ['CELESTIAL', 'GALAXY', 'ELECTRIC', 'ARCANE', 'VIRTUAL', 'ASTRAL', 'Stormal : HURRICANE', 'Bounded : UNBOUND', 'EXOTIC'],
-    'Legendary': ['STARSCOURGE', 'SAILOR', 'MATRIX', 'CHROMATIC', 'ETHEREAL', 'TWILIGHT : IRIDESCENT MEMORY'],
+    "Rare": [
+        "CELESTIAL",
+        "GALAXY",
+        "ELECTRIC",
+        "ARCANE",
+        "VIRTUAL",
+        "ASTRAL",
+        "Stormal : HURRICANE",
+        "Bounded : UNBOUND",
+        "EXOTIC",
+    ],
+    "Legendary": [
+        "STARSCOURGE",
+        "SAILOR",
+        "MATRIX",
+        "CHROMATIC",
+        "ETHEREAL",
+        "TWILIGHT : IRIDESCENT MEMORY",
+    ],
 }
 obtitles = {
-    'Legendary': ['STARSCOURGE', 'SAILOR', 'MATRIX','CHROMATIC', 'ETHEREAL', 'TWILIGHT : IRIDESCENT MEMORY'],
-    'Mythical': ['ARCHANGEL', 'BLOODLUST','IMPEACHED', 'ABYSSALHUNTER', 'SAILOR : DUTCHMAN', 'EXOTIC : APEX', 'CHROMATIC : GENESIS', 'STARSCOURGE : RADIANT', 'MATRIX : OVERDRIVE']
+    "Legendary": [
+        "STARSCOURGE",
+        "SAILOR",
+        "MATRIX",
+        "CHROMATIC",
+        "ETHEREAL",
+        "TWILIGHT : IRIDESCENT MEMORY",
+    ],
+    "Mythical": [
+        "ARCHANGEL",
+        "BLOODLUST",
+        "IMPEACHED",
+        "ABYSSALHUNTER",
+        "SAILOR : DUTCHMAN",
+        "EXOTIC : APEX",
+        "CHROMATIC : GENESIS",
+        "STARSCOURGE : RADIANT",
+        "MATRIX : OVERDRIVE",
+    ],
 }
 
 # RARITY THRESHOLDS
 
 rarity_thresholds = {
-    'Common': (0, 75000),
-    'Uncommon': (75001, 85000),
-    'Rare': (85001, 99000),
-    'Legendary': (99001, 99998),
-    'Mythical' : (99999,100000)
-    
+    "Common": (0, 75000),
+    "Uncommon": (75001, 85000),
+    "Rare": (85001, 99000),
+    "Legendary": (99001, 99998),
+    "Mythical": (99999, 100000),
 }
 
-hp1rar = {
-    'Uncommon': (0, 65),      
-    'Rare': (66, 100)
-}
+hp1rar = {"Uncommon": (0, 65), "Rare": (66, 100)}
 
-hp2rar = {
-    'Rare': (0, 60),
-    'Legendary': (71, 100)
-}
+hp2rar = {"Rare": (0, 60), "Legendary": (71, 100)}
 
-obrar = {
-    'Legendary': (0, 60),
-    'Mythical' : (61,100)
-}
+obrar = {"Legendary": (0, 60), "Mythical": (61, 100)}
 
 # MENUS
+
 
 def startMenu():
     global playerName
@@ -104,10 +197,7 @@ def startMenu():
 
     while True:
         ent = survey.routines.select(
-            options = [
-                "PLAY",
-                "QUIT"
-            ],
+            options=["PLAY", "QUIT"],
         )
         if ent == 0:
             system("cls||clear")
@@ -116,20 +206,19 @@ def startMenu():
             print("Would you like to load your save?")
 
             sav = survey.routines.select(
-                options = [
-                    "YES",
-                    "NO"
-                ],
+                options=["YES", "NO"],
             )
 
             if sav == 0:
-                load()
+                saveload.load()
                 mainMenu()
-            
+
             if sav == 1:
                 print("Enter your Name:")
                 playerName = input(">")
-                print("Initialize the inventory by checking it as soon as you get to the main menu(only for the first time!).")
+                print(
+                    "Initialize the inventory by checking it as soon as you get to the main menu(only for the first time!)."
+                )
                 input("Press Enter to continue.....")
                 mainMenu()
 
@@ -138,10 +227,7 @@ def startMenu():
             print("Are you sure?")
 
             sur = survey.routines.select(
-                options = [
-                    "YES",
-                    "NO"
-                ],
+                options=["YES", "NO"],
             )
 
             if sur == 0:
@@ -196,10 +282,10 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
             equipment()
 
         elif ch == 1:
-            #Initialize Inventory
-            populate_inventory(titles)
+            # Initialize Inventory
+            inventory.populate_inventory(titles)
             # Display the inventory
-            display(inventory)
+            inventory.display()
 
         elif ch == 5:
             craft()
@@ -207,12 +293,7 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
         elif ch == 6:
             while True:
                 print("Do you want to roll?")
-                z = survey.routines.select(
-                    options = [
-                        "YES",
-                        "NO"
-                    ]
-                )
+                z = survey.routines.select(options=["YES", "NO"])
 
                 if z == 0:
                     roll()
@@ -233,9 +314,9 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
             exit()
 
         elif ch == 7:
-            save()
+            saveload.save()
 
-# uncomment for devmenu + legacy main menu :D
+        # uncomment for devmenu + legacy main menu :D
         """print("CHECK ROLL COUNT")
         print("CHECK INVENTORY")
         print("CHECK POTION STORAGE")
@@ -318,6 +399,7 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
         else:
             print("Please enter a valid option!")"""
 
+
 # BACK TO MENUS
 
 
@@ -343,23 +425,23 @@ def storage():
 
         cho = survey.routines.select(
             "What would you like to use?",
-            options = [
+            options=[
                 "HEAVENLY I POTION",
                 "HEAVENLY II POTION",
                 "OBLIVION POTION",
-                "QUIT" 
+                "QUIT",
             ],
         )
 
         if cho == 0:
             hpI()
-        
+
         if cho == 1:
             hpII()
-        
+
         if cho == 2:
             ob()
-        
+
         if cho == 3:
             return
 
@@ -401,29 +483,30 @@ def craft():
     print("\033[1m You currently have :", coinAmount, "coins. \033[0m")
     print("What would you like to craft?")
     op = survey.routines.select(
-        options = [
+        options=[
             "HEAVENLY POTION II",
             "OBLIVION POTION",
             "LUCK DEVICE",
             "DEVICE OF THE WIND",
-            "QUIT"
+            "QUIT",
         ],
     )
-    
+
     if op == 0:
-        hpIIcr()
-    
+        crafting.hpIIcr()
+
     if op == 1:
-        obcr()
-    
+        crafting.obcr()
+
     if op == 2:
-        luckDeviceCr()
+        crafting.luckDeviceCr()
 
     if op == 3:
-        cdDeviceCr()
+        crafting.cdDeviceCr()
 
     if op == 4:
         return
+
 
 def equipment():
     system("cls||clear")
@@ -455,25 +538,21 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
         print("Device of the Wind is Equipped!")
 
     if ldequipped == 0 and cddequipped == 0:
-        print("None")  
+        print("None")
 
     print("\n")
 
     print("What would you like to use?")
 
     eh = survey.routines.select(
-        options = [
-            "LUCK DEVICE",
-            "DEVICE OF THE WIND",
-            "QUIT"
-        ],
+        options=["LUCK DEVICE", "DEVICE OF THE WIND", "QUIT"],
     )
 
     if eh == 0:
-        luckDevice()
+        devices.luckDevice()
 
     if eh == 1:
-        cdDevice()
+        devices.cdDevice()
 
     if eh == 2:
         return
@@ -484,39 +563,38 @@ def vegas():
     print("\n")
     vch = survey.routines.select(
         "What would you like to do?",
-        options = [
-            "SPIN THE REELS!",
-            "CHECK REWARDS EARNED",
-            "QUIT"
-        ],
+        options=["SPIN THE REELS!", "CHECK REWARDS EARNED", "QUIT"],
     )
     if vch == 0:
-        slot_machine()
-    
+        minigames.slot_machine()
+
     if vch == 1:
         print("So far you have won:")
         print(f"COINS : {coinsearned}")
         print(f"HEAVENLY I POTIONS : {hpearned}")
         input("Press Enter to contionue.....")
-    
+
     if vch == 2:
         return
 
 
-
 # ALL ROLL FUNCTIONS
+
 
 def get_random_number():
     return random.randint(1, 100000)
+
 
 def get_rarity(number):
     for rarity, (low, high) in rarity_thresholds.items():
         if low <= number <= high:
             return rarity
-    return 'Common'
+    return "Common"
+
 
 def get_title(rarity):
     return random.choice(titles[rarity])
+
 
 def roll():
     global rarity_thresholds
@@ -533,7 +611,7 @@ def roll():
 | $$            |  $$$$$$/      | $$      | $$
 |__/             \______/       |__/      |__/ \033[0m
 \n\n\n""")
-    weatherChange()
+    weather.weatherChange()
     random_number = get_random_number()
     rarity = get_rarity(random_number)
     title = get_title(rarity)
@@ -543,10 +621,11 @@ def roll():
 
     print("You Rolled", title)
 
-    add(title, 1)
+    saveload.add(title, 1)
     global rollCount
     rollCount += 1
     sleep(rollCooldown)
+
 
 def hpI():
     global hpCount
@@ -558,7 +637,7 @@ def hpI():
         for rarity, (low, high) in hp1rar.items():
             if low <= number <= high:
                 return rarity
-        return 'Common'
+        return "Common"
 
     def hp1title(rarity):
         return random.choice(hp1titles[rarity])
@@ -570,7 +649,7 @@ def hpI():
         print("You Rolled", title)
         global rollCount
         rollCount += 1
-        add(title, 1)
+        saveload.add(title, 1)
 
     if hpCount > 0:
         print("YOU USED ONE HEAVENLY I POTION AND:")
@@ -591,7 +670,7 @@ def hpII():
         for rarity, (low, high) in hp2rar.items():
             if low <= number <= high:
                 return rarity
-        return 'Common'
+        return "Common"
 
     def hp2title(rarity):
         return random.choice(hp2titles[rarity])
@@ -605,7 +684,7 @@ def hpII():
         rollCount += 1
         global hp2count
         hp2count -= 1
-        add(title, 1)
+        saveload.add(title, 1)
 
     if int(hp2count) > 0:
         print("YOU USED ONE HEAVENLY II POTION AND:")
@@ -625,7 +704,7 @@ def ob():
         for rarity, (low, high) in obrar.items():
             if low <= number <= high:
                 return rarity
-        return 'Common'
+        return "Common"
 
     def obtitle(rarity):
         return random.choice(obtitles[rarity])
@@ -637,7 +716,7 @@ def ob():
         print("You Rolled", title)
         global rollCount
         rollCount += 1
-        add(title, 1)
+        saveload.add(title, 1)
 
     if obCount > 0:
         print("YOU USED ONE OBLIVION POTION AND:")
@@ -646,10 +725,12 @@ def ob():
         obCount -= 1
     else:
         print("YOU DO NOT HAVE ANY OBLIVION POTIONS")
-        
+
     input("Press Enter to continue...")
 
+
 # GIVE FUNCTIONS
+
 
 def givehp():
     global rollCount
@@ -660,10 +741,9 @@ def givehp():
         print("YOU SHALL RECEIVE A HEAVENLY I POTION FOR YOUR EFFORTS!")
         sleep(2)
         global hpCount
-        hpCount += 1        
+        hpCount += 1
 
 
-        
 def devInvEdit():
     global inventory
     print("What title would you like to modify?")
@@ -674,7 +754,7 @@ def devInvEdit():
         inventory[name] = quantity
         print(f"Set '{name}' to quantity : '{quantity}'")
         input("Press Enter to continue")
-              
+
     else:
         print(f"Adding a new title : {name}, do you want to proceed?")
         a = input(">")
@@ -682,8 +762,10 @@ def devInvEdit():
             inventory[name] = quantity
         else:
             print("Returning to dev menu.....")
-            
+
+
 # DEV MENU
+
 
 def devMode():
     global coinAmount
@@ -693,29 +775,29 @@ def devMode():
 
     while True:
         system("cls||clear")
-    
+
         print("====== DEVELOPER MENU ======")
         print("VIEW INVENTORY")
         print("ADD TITLE TO INVENTORY")
         print("INVENTORY MANIPULATION")
         print("STORAGE MANIPULATION")
         print("VIEW CURRENT RARITY THRESHOLDS")
-        print("VIEW CURRENT COOLDODWN TIME")    
+        print("VIEW CURRENT COOLDODWN TIME")
         print("BACK TO MAIN MENU")
         print("What do you want to do?")
         choi = input(">").lower()
 
         if choi == "view":
-            populate_inventory(titles)
+            inventory.populate_inventory(titles)
             # Display the inventory
-            display(inventory)
+            inventory.display(inventory)
 
         elif choi == "add":
             print("What would you like to add?")
             name = input(">")
             print(f"Quantity of {name}?")
             quantity = int(input(">"))
-            add(name, quantity)
+            saveload.add(name, quantity)
 
         elif choi == "iman":
             devInvEdit()
@@ -742,7 +824,7 @@ def devMode():
             elif m == "ob":
                 print("Enter new value")
                 obCount = int(input(">"))
-                                
+
             else:
                 print("Please enter a valid choice.")
                 sleep(2)
@@ -757,7 +839,7 @@ def devMode():
             input("Press Enter to continue.....")
 
         elif choi == "help":
-                devMenuHelp()
+            devMenuHelp()
 
         elif choi == "mm":
             print("Going back to Main Menu!")
@@ -767,13 +849,14 @@ def devMode():
 
 # ANIMATION STUFF
 
+
 def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def print_bouncing_text(text, x, y):
     # Create a frame with empty spaces
-    frame = [[' ' for _ in range(width)] for _ in range(height)]
+    frame = [[" " for _ in range(width)] for _ in range(height)]
 
     # Place the text in the frame
     for i, char in enumerate(text):
@@ -782,7 +865,7 @@ def print_bouncing_text(text, x, y):
 
     # Print the frame
     for row in frame:
-        print(''.join(row))
+        print("".join(row))
     print("\n" * 2)  # Extra space below the animation
 
 
@@ -821,21 +904,22 @@ def print_scrolling_text(text, delay=0.1, width=40):
     """
     # Prepare the text to scroll
     lines = text.splitlines()
-    scrolling_text = ' '.join(lines)
-    padding = ' ' * width
+    scrolling_text = " ".join(lines)
+    padding = " " * width
     full_text = padding + scrolling_text + padding
-    
+
     # Calculate the number of iterations needed
     max_position = len(full_text) - width
-    
+
     # Scrolling effect loop
     while True:
         for position in range(max_position):
-            sys.stdout.write('\r' + full_text[position:position + width])
+            sys.stdout.write("\r" + full_text[position : position + width])
             sys.stdout.flush()
             time.sleep(delay)
         # Break the loop if needed (e.g., for demonstration purposes)
         break
+
 
 def display_credits():
     """
@@ -843,7 +927,7 @@ def display_credits():
     """
     # Prepare the credits text
     system("cls||clear")
-    credits_text =("""\
+    credits_text = """\
 CREDITS:
 LEAD PROGRAMMER:
 AAKASH KRISHNASAMY
@@ -851,12 +935,13 @@ AAKASH KRISHNASAMY
 SPECIAL THANKS TO:
 AADARSH MADAN KOLLAN AND
 ILESH KEDHARANATH THIADA
-""")
+"""
     # Call the scrolling text function
     print_scrolling_text(credits_text, delay=0.1, width=40)
 
     # End the scrolling and wait for user input
     input("\nPress Enter to continue.....")
+
 
 # HELP FUNCTIONS
 
@@ -870,6 +955,7 @@ def currencyHelp():
     print("You will win if either two or all slots match up.")
     input("Press Enter to continue.....")
 
+
 def mainMenuHelp():
     system("cls||clear")
     print("Type in the first letter or the entire word for the action you want to")
@@ -880,13 +966,17 @@ def mainMenuHelp():
     sleep(2)
     input("Press Enter to continue.....")
 
+
 def storageHelp():
     system("cls||clear")
-    print("Type in either the numbers to use the potions or their abbreviations to use them")
+    print(
+        "Type in either the numbers to use the potions or their abbreviations to use them"
+    )
     sleep(2)
     print("(for example : To use a Heavenly Potion II --> 2 or hp2).")
     sleep(2)
     input("Press Enter to continue.....")
+
 
 def craftingHelp():
     system("cls||clear")
@@ -895,6 +985,7 @@ def craftingHelp():
     print("(for example : To craft an Oblivion Potion --> op).")
     sleep(2)
     input("Press Enter to continue.....")
+
 
 def equipmentHelp():
     system("cls|clear")
@@ -905,6 +996,7 @@ def equipmentHelp():
     print("(for example : To equip device of the wind --> dotw)")
     sleep(2)
     input("Press Enter to continue.....")
+
 
 def devMenuHelp():
     system("cls||clear")
@@ -919,8 +1011,6 @@ def devMenuHelp():
     system("cls||clear")
     print(">:-D  muahahaha")
     exit()
-
-    
 
 
 # STARTING THE GAME!

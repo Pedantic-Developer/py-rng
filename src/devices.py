@@ -1,16 +1,6 @@
 # :D
 from time import sleep
 import survey
-import random
-import time
-from time import sleep
-import os
-from crafting import *
-from minigames import *
-from saveload import *
-from weather import *
-from inventory import *
-from rng import *
 
 rollCount = 0
 inventory = {}
@@ -32,13 +22,13 @@ height = 10
 ch = ""
 currentWeather = ""
 rarity_thresholds = {
-    'Common': (0, 75000),
-    'Uncommon': (75001, 85000),
-    'Rare': (85001, 99000),
-    'Legendary': (99001, 99998),
-    'Mythical' : (99999,100000)
-    
+    "Common": (0, 75000),
+    "Uncommon": (75001, 85000),
+    "Rare": (85001, 99000),
+    "Legendary": (99001, 99998),
+    "Mythical": (99999, 100000),
 }
+
 
 def luckDevice():
     """A device that alters the rarity thresholds to increase chances of getting something rare."""
@@ -49,26 +39,23 @@ def luckDevice():
         if ldequipped == 1:
             print("Would you like to unequip the Luck Device?")
             ech = survey.routines.select(
-            options = [
-                "YES",
-                "NO"
-            ],
-        )
+                options=["YES", "NO"],
+            )
             if ech == 0:
                 ldequipped = 0
-                
+
                 rarity_thresholds = {
-                    'Common': (0, 75000),
-                    'Uncommon': (75001, 85000),
-                    'Rare': (85001, 99000),
-                    'Legendary': (99001, 99998),
-                    'Mythical' : (99999,100000)
+                    "Common": (0, 75000),
+                    "Uncommon": (75001, 85000),
+                    "Rare": (85001, 99000),
+                    "Legendary": (99001, 99998),
+                    "Mythical": (99999, 100000),
                 }
 
                 print("You have unequipped the Luck Device")
                 sleep(2)
                 return
-            
+
             if ech == 1:
                 pass
 
@@ -76,18 +63,19 @@ def luckDevice():
             print("Equipped Luck Device!")
             ldequipped = 1
             rarity_thresholds = {
-            'Common': (0, 60000),
-            'Uncommon': (60001, 75000),
-            'Rare': (75001, 99000),
-            'Legendary': (99001, 99880),
-            'Mythical' : (99881,100000)
-        }
+                "Common": (0, 60000),
+                "Uncommon": (60001, 75000),
+                "Rare": (75001, 99000),
+                "Legendary": (99001, 99880),
+                "Mythical": (99881, 100000),
+            }
 
-            input("Press Enter to continue.....")  
+            input("Press Enter to continue.....")
 
     else:
         print("You do not own the Luck Device!")
         input("Press Enter to continue.....")
+
 
 def cdDevice():
     """makes life easier"""
@@ -95,14 +83,10 @@ def cdDevice():
     global cddequipped
 
     if cdDeviceCrafted == 1:
-
         if cddequipped == 1:
             print("Would you like to uneqip the device?")
             ech = survey.routines.select(
-                options = [
-                    "YES",
-                    "NO"
-                ],
+                options=["YES", "NO"],
             )
             if ech == 0:
                 cddequipped = 0
@@ -121,4 +105,3 @@ def cdDevice():
     else:
         print("You do not own the Device of the Wind!")
         input("Press Enter to continue.....")
-        

@@ -1,18 +1,7 @@
 import random
-import time
 from os import system
-from inventory import add
 import survey
-import random
-import time
 from time import sleep
-import os
-from crafting import *
-from devices import *
-from saveload import *
-from weather import *
-from inventory import *
-from rng import *
 
 rollCount = 0
 inventory = {}
@@ -34,6 +23,7 @@ height = 10
 ch = ""
 currentWeather = ""
 
+
 def slot_machine():
     global hpearned
     global coinsearned
@@ -44,24 +34,26 @@ def slot_machine():
     global hpCount
     # Define the symbols for the slot machine
     symbols = ["🍒", "🍋", "🍊", "🍉", "🍇", "⭐"]
-    
+
     # Display welcome message
     system("cls||clear")
     print("\nSLOT MACHINE!!!!!!!")
     print("Press Enter to spin...")
     input(">")
-    
+
     # Spin the reels
     reel1 = random.choice(symbols)
     reel2 = random.choice(symbols)
     reel3 = random.choice(symbols)
-    
+
     # Display the result
     print(f"{reel1} | {reel2} | {reel3}")
-    
+
     # Determine the result
     if reel1 == reel2 == reel3:
-        print("Congratulations! You won! YOU HAVE RECEIVED A HEAVENLY POTION I AND SOME COINS AS YOUR REWARD!")
+        print(
+            "Congratulations! You won! YOU HAVE RECEIVED A HEAVENLY POTION I AND SOME COINS AS YOUR REWARD!"
+        )
         hpCount += 1
         coinAmount += 200
         hpearned += 1
@@ -72,27 +64,24 @@ def slot_machine():
         coinsearned += 100
     else:
         print("Better luck next time!")
-    
+
     sleep(rollCooldown)
-    
+
     # Offer to play again
     print("Do you want to play again?")
     choice = survey.routines.select(
-            options = [
-                "YES",
-                "NO",
-                "HELP"
-            ],
-        )
+        options=["YES", "NO", "HELP"],
+    )
     if choice == 0:
         slot_machine()  # Recursively call slot_machine to play again
 
     if choice == 1:
         print("Thanks for playing!")
         input("Press Enter to continue....")
-    
+
     if choice == 2:
         currencyHelp()
+
 
 def currencyHelp():
     system("cls||clear")
