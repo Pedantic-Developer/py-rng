@@ -1,0 +1,38 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+
+# Test and coverage reports
+*.cover
+*.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.log
+
+# IDE/editor specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
