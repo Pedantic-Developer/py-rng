@@ -131,6 +131,7 @@ def startMenu():
                 mainMenu()
 
         if ent == 1:
+            system("cls||clear")
             print("Are you sure?")
 
             sur = survey.routines.select(
@@ -519,7 +520,7 @@ def roll():
     global rollCooldown
     system("cls||clear")
 
-    print("""\\\033[1m
+    print("""\033[1m
                                  /$$       /$$
                                 | $$      | $$
   /$$$$$$         /$$$$$$       | $$      | $$
@@ -527,7 +528,7 @@ def roll():
 | $$  \__/      | $$  \ $$      | $$      | $$
 | $$            | $$  | $$      | $$      | $$
 | $$            |  $$$$$$/      | $$      | $$
-|__/             \______/       |__/      |__/ \\\033[0m
+|__/             \______/       |__/      |__/ \033[0m
 \n\n\n""")
     weatherChange()
     random_number = get_random_number()
@@ -997,7 +998,7 @@ def weather():
 
     elif b == 4:
         print("SUNNY: IT IS NICE AND BRIGHT, YOU WOULD ENJOY IT MORE IF YOU COULD STOP SWEATING SO MUCH.")
-        currentWeather =="SUNNY"
+        currentWeather = "SUNNY"
 
     sleep(1)
 
