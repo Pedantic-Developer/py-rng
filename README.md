@@ -41,11 +41,25 @@ After you enter the game for the first time check your inventory to initialize i
 
 ## Features
 
-py-rng features a fully interactable main menu!
+py-rng Features:
+A fully interactable main menu!
 
-[Game Screenshot](/screenshots/mainmenu.png)
+![Game Screenshot](/screenshots/mainmenu.png)
 
 
-py-rng also  features a roll mode with weather change!
+A roll mode with weather change!
 
-[Game Screenshot](/screenshots/roll.png)
+![Game Screenshot](/screenshots/roll.png)
+
+
+An Inventory with a WIDE LIST OF AURAS!
+![Game Screenshot](/screenshots/inventory.png)
+
+
+Full Inventory:
+[Game Screenshot](/screenshots/inventory.png)
+[Game Screenshot](/screenshots/inv2.png)
+[Game Screenshot](/screenshots/inv3.png)
+[Game Screenshot](/screenshots/inv4.png)
+
+it also features a crafting system, a potion storage menu and more!
