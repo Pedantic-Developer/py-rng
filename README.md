@@ -1,7 +1,12 @@
 # py-rng
 A fangame of Sol's RNG made entirely in Python.
-UwU
+![Game Screenshot](/home/aakashkrishnasamy/Pictures/py-rng.png)
 ## Installation
+Clone the repository:
+ ```bash
+ git clone https://github.com/Pedantic-Developer/py-rng
+ cd py-rng/
+   ```
 
 To play the game, first install the required libraries:
 
