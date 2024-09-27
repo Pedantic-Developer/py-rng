@@ -43,7 +43,7 @@ cd src
 
 After going into src, you can launch the game by entering:
 ```cmd
-python finalrng.py # For Windows
+python finalrng.py // For Windows
 ```
 or 
 
