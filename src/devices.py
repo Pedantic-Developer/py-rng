@@ -37,7 +37,7 @@ def luckDevice():
 
     if luckDeviceCrafted == 1:
         if ldequipped == 1:
-            print("Would you like to unequip the Luck Device?")
+            print("\033[1mWould you like to unequip the Luck Device?\033[0m")
             ech = survey.routines.select(
                 options=["YES", "NO"],
             )
@@ -52,7 +52,7 @@ def luckDevice():
                     "Mythical": (99999, 100000),
                 }
 
-                print("You have unequipped the Luck Device")
+                print("\033[1;31mYou have unequipped the Luck Device\033[0m")
                 sleep(2)
                 return
 
@@ -60,7 +60,7 @@ def luckDevice():
                 pass
 
         else:
-            print("Equipped Luck Device!")
+            print("\033[1;32mYou have equipped the Luck Device!\033[0m")
             ldequipped = 1
             rarity_thresholds = {
                 "Common": (0, 60000),
@@ -73,7 +73,7 @@ def luckDevice():
             input("Press Enter to continue.....")
 
     else:
-        print("You do not own the Luck Device!")
+        print("\033[1;31mYou do not own the Luck Device!\033[0m")
         input("Press Enter to continue.....")
 
 
@@ -84,24 +84,24 @@ def cdDevice():
 
     if cdDeviceCrafted == 1:
         if cddequipped == 1:
-            print("Would you like to uneqip the device?")
+            print("\033[1mWould you like to uneqip the device?\033[0m")
             ech = survey.routines.select(
                 options=["YES", "NO"],
             )
             if ech == 0:
                 cddequipped = 0
-                print("You have unequipped the Device of the Wind")
+                print("\033[1;31mYou have unequipped the Device of the Wind\033[0m")
                 sleep(2)
                 return
             if ech == 1:
                 pass
 
         else:
-            print("You have equipped the Device of the Wind!")
+            print("\033[1;32mYou have equipped the Device of the Wind!\033[0m")
             cddequipped = 1
             rollCooldown = 0.5
             input("Press Enter to continue.....")
 
     else:
-        print("You do not own the Device of the Wind!")
+        print("\033[1;31mYou do not own the Device of the Wind!\033[0m")
         input("Press Enter to continue.....")

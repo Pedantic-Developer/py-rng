@@ -22,46 +22,31 @@ ch = ""
 currentWeather = ""
 
 
-def weatherChange():
-    global currentWeather
-    w = False
-    if rollCount == 0:
-        w = False
-    if rollCount % 60 == 0:
-        w = True
-
-    if rollCount % 60 != 0:
-        w = False
-
-    if w:
-        weather()
-
-    print("THE WEATHER CURRENTLY IS:", currentWeather)
 
 
 def weather():
     global currentWeather
     b = random.randint(1, 5)
-    print("The weather seems to change.....")
+    print("\033[1mThe weather seems to change.....\033[0m")
     sleep(1)
 
     if b == 1:
-        print("WINDY: TREES SWAY TO THE WIND, YOU FEEL REFRESHED.")
+        print("\033[1;32mWINDY: TREES SWAY TO THE WIND, YOU FEEL REFRESHED.\033[0m")
         currentWeather = "WINDY"
 
     elif b == 2:
         print(
-            "SNOWY: COLD WHITE SNOW COVERS YOUR SURROUNDINGS, WAIT IS THE SNOW YELLOW???!!!"
+            "\033[1mSNOWY: COLD WHITE SNOW COVERS YOUR SURROUNDINGS, WAIT IS THE SNOW YELLOW???!!!\033[0m"
         )
         currentWeather = "SNOWY"
 
     elif b == 3:
-        print("RAINY: VERY WET INDEED!")
+        print("\033[1;34mRAINY: VERY WET INDEED!\033[0m")
         currentWeather = "RAINY"
 
     elif b == 4:
         print(
-            "SUNNY: IT IS NICE AND BRIGHT, YOU WOULD ENJOY IT MORE IF YOU COULD STOP SWEATING SO MUCH."
+            "\033[1;33mSUNNY: IT IS NICE AND BRIGHT, YOU WOULD ENJOY IT MORE IF YOU COULD STOP SWEATING SO MUCH.\033[0m"
         )
         currentWeather = "SUNNY"
 

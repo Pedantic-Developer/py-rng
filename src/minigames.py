@@ -37,7 +37,7 @@ def slot_machine():
 
     # Display welcome message
     system("cls||clear")
-    print("\nSLOT MACHINE!!!!!!!")
+    print("\n\033[1;37mSLOT MACHINE!!!!!!!\033[0m")
     print("Press Enter to spin...")
     input(">")
 
@@ -52,18 +52,18 @@ def slot_machine():
     # Determine the result
     if reel1 == reel2 == reel3:
         print(
-            "Congratulations! You won! YOU HAVE RECEIVED A HEAVENLY POTION I AND SOME COINS AS YOUR REWARD!"
+            "\033[1;32mCongratulations! You won! YOU HAVE RECEIVED A HEAVENLY POTION I AND SOME COINS AS YOUR REWARD!\033[0m"
         )
         hpCount += 1
         coinAmount += 200
         hpearned += 1
         coinsearned += 200
     elif reel1 == reel2 or reel2 == reel3 or reel1 == reel3:
-        print("You got a small win! YOU HAVE RECEIVED SOME COINS AS YOUR REWARDS!")
+        print("\033[1;32mYou got a small win! YOU HAVE RECEIVED SOME COINS AS YOUR REWARDS!\033[0m")
         coinAmount += 100
         coinsearned += 100
     else:
-        print("Better luck next time!")
+        print("\033[1;31mBetter luck next time!\033[0m")
 
     sleep(rollCooldown)
 

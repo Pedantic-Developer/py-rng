@@ -182,14 +182,14 @@ def startMenu():
     global playerName
     global ch
     system("cls||clear")
-    print("""\033[1m
+    print("""\033[1m\033[1;36m 
           :::::::::             :::   :::                      :::::::::                   ::::    :::                   :::::::: 
          :+:    :+:            :+:   :+:                      :+:    :+:                  :+:+:   :+:                  :+:    :+: 
         +:+    +:+             +:+ +:+                       +:+    +:+                  :+:+:+  +:+                  +:+         
        +#++:++#+               +#++:                        +#++:++#:                   +#+ +:+ +#+                  :#:          
       +#+                      +#+                         +#+    +#+                  +#+  +#+#+#                  +#+   +#+#    
      #+#                      #+#                         #+#    #+#                  #+#   #+#+#                  #+#    #+#     
-    ###                      ###                         ###    ###                  ###    ####                   ########\033[0m
+    ###                      ###                         ###    ###                  ###    ####                   ########\033[0m\033[0m
 \n""")
 
     print("Welcome to PY RNG! A Random Number Generator with an element of gambling?")
@@ -197,7 +197,7 @@ def startMenu():
 
     while True:
         ent = survey.routines.select(
-            options=["PLAY", "QUIT"],
+            options=["\033[1mPLAY\033[0m", "\033[1mQUIT\033[0m"],
         )
         if ent == 0:
             system("cls||clear")
@@ -245,7 +245,7 @@ def startMenu():
 def mainMenu():
     while True:
         system("cls||clear")
-        print("""\033[1m
+        print("""\033[1;32m
 $$\      $$\           $$\                 $$\      $$\                               
 $$$\    $$$ |          \__|                $$$\    $$$ |                              
 $$$$\  $$$$ | $$$$$$\  $$\ $$$$$$$\        $$$$\  $$$$ | $$$$$$\  $$$$$$$\  $$\   $$\ 
@@ -256,23 +256,23 @@ $$ | \_/ $$ |\$$$$$$$ |$$ |$$ |  $$ |      $$ | \_/ $$ |\$$$$$$$\ $$ |  $$ |\$$$
 \__|     \__| \_______|\__|\__|  \__|      \__|     \__| \_______|\__|  \__| \______/ \033[0m
 \n\n\n""")
         ch = survey.routines.select(
-            "What would you like to do? ",
+            "\033[1mWhat would you like to do?\033[0m",
             options=[
-                "CHECK ROLL COUNT",
-                "CHECK INVENTORY",
-                "CHECK POTION STORAGE",
-                "EQUIPMENT",
-                "VEGAS?!",
-                "CRAFT",
-                "ROLL",
-                "SAVE",
-                "CREDITS",
-                "QUIT",
+                "\033[1mCHECK ROLL COUNT\033[0m",
+                "\033[1mCHECK INVENTORY\033[0m",
+                "\033[1mCHECK POTION STORAGE\033[0m",
+                "\033[1mEQUIPMENT\033[0m",
+                "\033[1mVEGAS?!\033[0m",
+                "\033[1mCRAFT\033[0m",
+                "\033[1mROLL\033[0m",
+                "\033[1mSAVE\033[0m",
+                "\033[1mCREDITS\033[0m",
+                "\033[1mQUIT\033[0m",
             ],
         )
 
         if ch == 0:
-            print("Your roll count is:", rollCount)
+            print("\033[1;33mYour roll count is:\033[0m", rollCount)
             input("Press Enter to continue...")
 
         elif ch == 2:
@@ -418,18 +418,18 @@ def storage():
                                                                                  /$$  \ $$                
                                                                                 |  $$$$$$/                
                                                                                  \______/                 \033[0m""")
-        print("You have", hpCount, "Heavenly I Potion(s)")
-        print("You have", hp2count, "HEAVENLY II POTION(S)")
-        print("You have", obCount, "OBLIVION POTION(S)\n\n")
+        print("\033[1;32mYou have", hpCount, "Heavenly I Potion(s)\033[0m")
+        print("\033[1;32mYou have", hp2count, "HEAVENLY II POTION(S)\033[0m")
+        print("\033[1;32mYou have", obCount, "OBLIVION POTION(S)\033[0m\n\n")
         print("What do you want to use?:")
 
         cho = survey.routines.select(
-            "What would you like to use?",
+            "\033[1mWhat would you like to use?",
             options=[
-                "HEAVENLY I POTION",
-                "HEAVENLY II POTION",
-                "OBLIVION POTION",
-                "QUIT",
+                "\033[1mHEAVENLY I POTION\033[0m",
+                "\033[1mHEAVENLY II POTION\033[0m",
+                "\033[1mOBLIVION POTION\033[0m",
+                "\033[1mQUIT\033[0m",
             ],
         )
 
@@ -449,46 +449,46 @@ def storage():
 def craft():
     system("cls||clear")
 
-    print("""\033[1m
+    print("""\033[1m\033[94m
  ______     ______     ______     ______   ______   __     __   __     ______    
 /\  ___\   /\  == \   /\  __ \   /\  ___\ /\__  _\ /\ \   /\ "-.\ \   /\  ___\   
 \ \ \____  \ \  __<   \ \  __ \  \ \  __\ \/_/\ \/ \ \ \  \ \ \-.  \  \ \ \__ \  
  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \_\      \ \_\  \ \_\  \ \_\\"\_\  \ \_____\ 
   \/_____/   \/_/ /_/   \/_/\/_/   \/_/       \/_/   \/_/   \/_/ \/_/   \/_____/ 
-                                                                                 \033[0m""")
-    print("POTIONS:")
-    print("""HEAVENLY II POTION:
+                                                                                 \033[0m\033[0m""")
+    print("\033[1;32mPOTIONS:\033[0m")
+    print("""\033[1;32mHEAVENLY II POTION:
               CONUSMES: 2x HEAVENLY I POTION
                         2x CELESTIAL
-                        200x COINS""")
+                        200x COINS\033[0m""")
     print("\n")
-    print("""OBLIVION POTION:
+    print("""\033[1;32mOBLIVION POTION:
               CONSUMES: 5x HEAVENLY II POTION
                         1x CHROMATIC
-                        1000x COINS""")
+                        1000x COINS\033[0m""")
     print("\n")
-    print("DEVICES:")
-    print("""LUCK DEVICE:
+    print("\033[1;35mDEVICES:\033[0m")
+    print("""\033[1;35mLUCK DEVICE:
               CONSUMES: 100x  Divinus
                         20x  Jade
                         10x   EXOTIC
-                        2000x COINS""")
+                        2000x COINS\033[0m""")
     print("\n")
-    print("""THE DEVICE OF THE WIND:
+    print("""\033[1;35mTHE DEVICE OF THE WIND:
               CONSUMES: 150x Wind
                         25x  Stormal
                         15x  Stormal : HURRICANE
-                        4000x Coins""")
+                        4000x Coins\033[0m""")
     print("\n")
-    print("\033[1m You currently have :", coinAmount, "coins. \033[0m")
+    print("\033[1;33mYou currently have :", coinAmount, "coins. \033[0m")
     print("What would you like to craft?")
     op = survey.routines.select(
         options=[
-            "HEAVENLY POTION II",
-            "OBLIVION POTION",
-            "LUCK DEVICE",
-            "DEVICE OF THE WIND",
-            "QUIT",
+            "\033[1mHEAVENLY POTION II\033[0m",
+            "\033[1mOBLIVION POTION\033[0m",
+            "\033[1mLUCK DEVICE\033[0m",
+            "\033[1mDEVICE OF THE WIND\033[0m",
+            "\033[1mQUIT\033[0m",
         ],
     )
 
@@ -510,7 +510,7 @@ def craft():
 
 def equipment():
     system("cls||clear")
-    print("""\033[1m$$$$$$$$\                     $$\                                               $$\     
+    print("""\033[1m\033[1;34m$$$$$$$$\                     $$\                                               $$\     
 $$  _____|                    \__|                                              $$ |    
 $$ |       $$$$$$\  $$\   $$\ $$\  $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$$$$$$\  $$$$$$\   
 $$$$$\    $$  __$$\ $$ |  $$ |$$ |$$  __$$\ $$  _$$  _$$\ $$  __$$\ $$  __$$\ \_$$  _|  
@@ -520,10 +520,9 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
 \________| \____$$ | \______/ \__|$$  ____/ \__| \__| \__| \_______|\__|  \__|   \____/ 
                 $$ |              $$ |                                                  
                 $$ |              $$ |                                                  
-                \__|              \__|                                                  \033[0m""")
-    print("EQUIPMENT:")
-    print("LUCK DEVICE")
-    print("DEVICE OF THE WIND")
+                \__|              \__|                                                  \033[0m\033[0m\n""")
+    print("\033[1;33mLUCK DEVICE : A device that boosts the wearer's luck!\033[0m")
+    print("\033[1;33mDEVICE OF THE WIND : A device that harnesses the power of the wind, making the wearer faster!\033[0m")
     if cdDeviceCrafted == 0:
         print("YOU DO NOT OWN THE DEVICE OF THE WIND!")
     if luckDeviceCrafted == 0:
@@ -531,11 +530,11 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
 
     print("\n")
 
-    print("EQUIPPED:")
+    print("\033[1mEQUIPPED:\033[0m")
     if ldequipped == 1:
-        print("Luck Device is Equipped!")
+        print("\033[0;37mLuck Device is Equipped!\033[0m")
     if cddequipped == 1:
-        print("Device of the Wind is Equipped!")
+        print("\033[0;37mDevice of the Wind is Equipped!\033[0m")
 
     if ldequipped == 0 and cddequipped == 0:
         print("None")
@@ -545,7 +544,7 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
     print("What would you like to use?")
 
     eh = survey.routines.select(
-        options=["LUCK DEVICE", "DEVICE OF THE WIND", "QUIT"],
+        options=["\033[1mLUCK DEVICE\033[0m", "\033[1mDEVICE OF THE WIND\033[0m", "\033[1mQUIT\033[0m"],
     )
 
     if eh == 0:
@@ -559,20 +558,31 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
 
 
 def vegas():
-    print("Vegas!!!!")
+    system("cls||clear")
+    print("""\033[93m\033[1m                                                                           
+                                                                           
+$$\    $$\        $$$$$$\         $$$$$$\         $$$$$$\         $$$$$$$\ 
+\$$\  $$  |      $$  __$$\       $$  __$$\        \____$$\       $$  _____|
+ \$$\$$  /       $$$$$$$$ |      $$ /  $$ |       $$$$$$$ |      \$$$$$$\  
+  \$$$  /        $$   ____|      $$ |  $$ |      $$  __$$ |       \____$$\ 
+   \$  /         \$$$$$$$\       \$$$$$$$ |      \$$$$$$$ |      $$$$$$$  |
+    \_/           \_______|       \____$$ |       \_______|      \_______/ 
+                                 $$\   $$ |                                
+                                 \$$$$$$  |                                
+                                  \______/                                 \033[0m\033[0m""")
     print("\n")
     vch = survey.routines.select(
-        "What would you like to do?",
-        options=["SPIN THE REELS!", "CHECK REWARDS EARNED", "QUIT"],
+        "\033[1mWhat would you like to do?\033[0m",
+        options=["\033[1mSPIN THE REELS!\033[0m", "\033[1mCHECK REWARDS EARNED\033[0m", "\033[1mQUIT\033[0m"],
     )
     if vch == 0:
         minigames.slot_machine()
 
     if vch == 1:
-        print("So far you have won:")
-        print(f"COINS : {coinsearned}")
-        print(f"HEAVENLY I POTIONS : {hpearned}")
-        input("Press Enter to contionue.....")
+        print("\033[1;33mSo far you have won\033[0m:")
+        print(f"\033[1;33m   COINS\033[0m : {coinsearned}")
+        print(f"\033[1;33m   HEAVENLY I POTIONS\033[0m : {hpearned}")
+        input("Press Enter to continue.....")
 
     if vch == 2:
         return
@@ -601,7 +611,7 @@ def roll():
     global rollCooldown
     system("cls||clear")
 
-    print("""\033[1m
+    print("""\033[1m\033[1;35m
                                  /$$       /$$
                                 | $$      | $$
   /$$$$$$         /$$$$$$       | $$      | $$
@@ -609,9 +619,9 @@ def roll():
 | $$  \__/      | $$  \ $$      | $$      | $$
 | $$            | $$  | $$      | $$      | $$
 | $$            |  $$$$$$/      | $$      | $$
-|__/             \______/       |__/      |__/ \033[0m
+|__/             \______/       |__/      |__/ \033[0m\033[0m
 \n\n\n""")
-    weather.weatherChange()
+    weatherChange()
     random_number = get_random_number()
     rarity = get_rarity(random_number)
     title = get_title(rarity)
@@ -619,7 +629,7 @@ def roll():
     if title in titles["Mythical"]:
         congratulations()
 
-    print("You Rolled", title)
+    print(f"\033[1;33mYou Rolled : {title} \033[0m")
 
     inventory.add(title, 1)
     global rollCount
@@ -687,10 +697,10 @@ def hpII():
         inventory.add(title, 1)
 
     if int(hp2count) > 0:
-        print("YOU USED ONE HEAVENLY II POTION AND:")
+        print("\033[1;32mYOU USED ONE HEAVENLY II POTION AND:\033[0m")
         hp2roll()
     else:
-        print("YOU DO NOT HAVE ANY HEAVENLY II POTIONS")
+        print("\033[1;31mYOU DO NOT HAVE ANY HEAVENLY II POTIONS\033[0m")
     input("Press Enter to continue...")
 
 
@@ -719,12 +729,12 @@ def ob():
         inventory.add(title, 1)
 
     if obCount > 0:
-        print("YOU USED ONE OBLIVION POTION AND:")
+        print("\033[1;32mYOU USED ONE OBLIVION POTION AND:\033[0m")
         congratulations()
         obroll()
         obCount -= 1
     else:
-        print("YOU DO NOT HAVE ANY OBLIVION POTIONS")
+        print("\033[1;31mYOU DO NOT HAVE ANY OBLIVION POTIONS\033[0m")
 
     input("Press Enter to continue...")
 
@@ -920,6 +930,22 @@ def print_scrolling_text(text, delay=0.1, width=40):
         # Break the loop if needed (e.g., for demonstration purposes)
         break
 
+def weatherChange():
+    global currentWeather
+    w = False
+    if rollCount == 0:
+        w = False
+    if rollCount % 60 == 0:
+        w = True
+
+    if rollCount % 60 != 0:
+        w = False
+
+    if w:
+        weather.weather()
+
+    print("THE WEATHER CURRENTLY IS:", currentWeather)
+
 
 def display_credits():
     """
@@ -927,14 +953,14 @@ def display_credits():
     """
     # Prepare the credits text
     system("cls||clear")
-    credits_text = """\
+    credits_text = """\033[1;36m
 CREDITS:
 LEAD PROGRAMMER:
 AAKASH KRISHNASAMY
 
 SPECIAL THANKS TO:
 AADARSH MADAN KOLLAN AND
-ILESH KEDHARANATH THIADA
+ILESH KEDHARANATH THIADA\033[0m 
 """
     # Call the scrolling text function
     print_scrolling_text(credits_text, delay=0.1, width=40)

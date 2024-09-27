@@ -30,7 +30,7 @@ def hpIIcr():
     global inventory
     name = "CELESTIAL"
     if hpCount >= 2 and inventory.editInventory(name, 2, 2) and coinAmount >= 200:
-        print("You have crafted: ONE HEAVENLY II POTION!")
+        print("\033[1;32mYou have crafted: ONE HEAVENLY II POTION!\033[0m")
         sleep(2)
         hp2count += 1
         coinAmount -= 200
@@ -38,7 +38,7 @@ def hpIIcr():
         print("Press Enter to continue.....")
 
     else:
-        print("You do not have the necessary materials to craft a HEAVENLY II POTION!")
+        print("\033[1;31mYou do not have the necessary materials to craft a HEAVENLY II POTION!\033[0m")
         sleep(2)
         input("Press Enter to continue.....")
 
@@ -50,7 +50,7 @@ def obcr():
     global inventory
     name = "CHROMATIC"
     if hp2count >= 5 and inventory.editInventory(name, 1, 1) and coinAmount >= 1000:
-        print("You have crafted: ONE OBLIVION POTION!")
+        print("\033[1;32mYou have crafted: ONE OBLIVION POTION!\033[0m")
         sleep(2)
         obCount += 1
         coinAmount -= 1000
@@ -58,7 +58,7 @@ def obcr():
         print("Press Enter to continue.....")
 
     else:
-        print("You do not have the necessary materials to craft an OBLIVION POTION!")
+        print("\033[1;31mYou do not have the necessary materials to craft an OBLIVION POTION!\033[0m")
         sleep(2)
         input("Press Enter to continue.....")
 
@@ -81,7 +81,7 @@ def luckDeviceCr():
             if inventory.editInventory(name, 20, 20):
                 name = "EXOTIC"
                 if inventory.editInventory(name, 10, 10):
-                    print("You have crafeted the Luck Device!")
+                    print("\033[1;32mYou have crafted the Luck Device!\033[0m")
                     luckDeviceCrafted = 1
                     input("Press Enter to continue.....")
 
@@ -104,6 +104,6 @@ def cdDeviceCr():
             if inventory.editInventory(name, 30, 30):
                 name = "Stormal : HURRICANE"
                 if inventory.editInventory(name, 15, 15):
-                    print("You have crafted the Device of the Wind")
+                    print("\033[1;32mYou have crafted the Device of the Wind!\033[0m")
                     cdDeviceCrafted = 1
                     input("Press Enter to continue.....")

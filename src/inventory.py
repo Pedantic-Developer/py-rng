@@ -91,7 +91,7 @@ def add(name, quantity):
         inv[name] += quantity
     else:
         inv[name] = quantity
-    print(f"Added {quantity} of '{name}' to your inventory.")
+    print(f"\033[1;37mAdded {quantity} of '{name}' to your inventory.\033[0m")
 
 
 def editInventory(name, quantity, minAmt):
@@ -101,11 +101,11 @@ def editInventory(name, quantity, minAmt):
     """
     if name in inv:
         if inv[name] - quantity < 0:
-            print(f"You dont have enough of {name} to proceed. ")
+            print(f"\033[1;31mYou dont have enough of {name} to proceed.\033[0m ")
             return False
         else:
             inv[name] -= quantity
-            print(f"Removed {quantity} of {name} from your inventory")
+            print(f"\033[1;31mRemoved {quantity} of {name} from your inventory\033[0m")
             return True
     else:
         print(f"You dont have enough of {name} to proceed")

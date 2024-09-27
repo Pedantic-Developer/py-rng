@@ -51,7 +51,7 @@ def save():
     with open("savefile", "wb") as f:
         pickle.dump(data, f)
     inventory.saveInventory()
-    print("YOU HAVE SAVED SUCCESSFULLY")
+    print("\033[1;36mYOU HAVE SAVED SUCCESSFULLY\033[0m")
     sleep(2)
 
 
@@ -84,6 +84,6 @@ def load():
         hpearned = int(data["vhp"])
         coinsearned = int(data["vco"])
     inventory.loadInventory()
-    print("LOADED SUCCESSFULLY")
+    print("\033[1;36mLOADED SUCCESSFULLY\033[0m")
 
     sleep(2)
