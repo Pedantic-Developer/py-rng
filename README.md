@@ -24,7 +24,13 @@ python -m pip -r requirements.txt
 ```
 
 ## Playing the game
-After installing the prerequisites, you can launch the game by entering:
+
+After installing thr prerequisites, go to the src folder:
+```bash
+cd /src
+```
+
+After going into src, you can launch the game by entering:
 ```bash
 python finalrng.py # For Windows
 ```
@@ -34,12 +40,6 @@ or
 python3 finalrng.py # For Linux
 ```
 in your console.
-
-Make sure to be in the same directory as the game:
-
-```bash
-cd directory/where/thegame/isstored
-```
 
 ### After Launching the Game
 
