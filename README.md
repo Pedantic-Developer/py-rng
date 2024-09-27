@@ -1,17 +1,28 @@
 # py-rng
-A text-based fangame of Sol's RNG made entirely in Python.
+**A text-based fangame of Sol's RNG made entirely in Python.**
 
 ![Game Screenshot](/screenshots/py-rng.png)
 
 
 ## Installation
-Clone the repository:
+
+### Cloning into the Repository:
+
+For Linux:
+
  ```bash
  git clone https://github.com/Pedantic-Developer/py-rng
  cd py-rng/
    ```
+For Windows:
+```cmd
+git clone https://github.com/Pedantic-Developer/py-rng
+cd \pyrng
+```
+### Installing Prerequisites:
 
 To play the game, first install the required libraries:
+
 ### For Linux:
 
 ```bash
@@ -19,7 +30,7 @@ pip install -r requirements.txt
 ```
 ### For Windows:
 
-```bash
+```cmd
 python -m pip -r requirements.txt
 ```
 
@@ -27,11 +38,11 @@ python -m pip -r requirements.txt
 
 After installing thr prerequisites, go to the src folder:
 ```bash
-cd /src
+cd src
 ```
 
 After going into src, you can launch the game by entering:
-```bash
+```cmd
 python finalrng.py # For Windows
 ```
 or 
@@ -43,12 +54,13 @@ in your console.
 
 ### After Launching the Game
 
-If it is your first time playing the game or you have forgotten to save, then DO NOT choose to load your save!
-After you enter the game for the first time check your inventory to initialize it!
+If it is your first time playing the game or you have forgotten to save, then **DO NOT** choose to load your save!
+After you enter the game for the first time **check your inventory** to initialize it!
 
 ## Features
 
-py-rng Features:
+**py-rng Features:**
+
 A fully interactable main menu!
 
 ![Game Screenshot](/screenshots/mainmenu.png)
