@@ -510,7 +510,8 @@ def craft():
 
 def equipment():
     system("cls||clear")
-    print("""\033[1m\033[1;34m$$$$$$$$\                     $$\                                               $$\     
+    print("""\033[1m\033[1;34m
+$$$$$$$$\                     $$\                                               $$\     
 $$  _____|                    \__|                                              $$ |    
 $$ |       $$$$$$\  $$\   $$\ $$\  $$$$$$\  $$$$$$\$$$$\   $$$$$$\  $$$$$$$\  $$$$$$\   
 $$$$$\    $$  __$$\ $$ |  $$ |$$ |$$  __$$\ $$  _$$  _$$\ $$  __$$\ $$  __$$\ \_$$  _|  
@@ -544,7 +545,11 @@ $$$$$$$$\ \$$$$$$$ |\$$$$$$  |$$ |$$$$$$$  |$$ | $$ | $$ |\$$$$$$$\ $$ |  $$ |  
     print("What would you like to use?")
 
     eh = survey.routines.select(
-        options=["\033[1mLUCK DEVICE\033[0m", "\033[1mDEVICE OF THE WIND\033[0m", "\033[1mQUIT\033[0m"],
+        options=[
+            "\033[1mLUCK DEVICE\033[0m",
+            "\033[1mDEVICE OF THE WIND\033[0m",
+            "\033[1mQUIT\033[0m",
+        ],
     )
 
     if eh == 0:
@@ -573,7 +578,11 @@ $$\    $$\        $$$$$$\         $$$$$$\         $$$$$$\         $$$$$$$\
     print("\n")
     vch = survey.routines.select(
         "\033[1mWhat would you like to do?\033[0m",
-        options=["\033[1mSPIN THE REELS!\033[0m", "\033[1mCHECK REWARDS EARNED\033[0m", "\033[1mQUIT\033[0m"],
+        options=[
+            "\033[1mSPIN THE REELS!\033[0m",
+            "\033[1mCHECK REWARDS EARNED\033[0m",
+            "\033[1mQUIT\033[0m",
+        ],
     )
     if vch == 0:
         minigames.slot_machine()
@@ -1041,4 +1050,10 @@ def devMenuHelp():
 
 # STARTING THE GAME!
 
-startMenu()
+try:
+    startMenu()
+except KeyboardInterrupt:
+    print("\n\n\nD:")
+    sleep(2)
+    print("owie")
+    sleep(1)
