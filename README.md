@@ -42,6 +42,8 @@ cd src
 ```
 
 After going into src, you can launch the game by entering:
+
+
 Windows:
 ```cmd
 python finalrng.py
@@ -49,7 +51,7 @@ python finalrng.py
 
 Linux: 
 ```bash
-python3 finalrng.py # For Linux
+python3 finalrng.py
 ```
 in your console.
 
