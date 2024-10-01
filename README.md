@@ -17,7 +17,7 @@ For Linux:
 For Windows:
 ```cmd
 git clone https://github.com/Pedantic-Developer/py-rng
-cd \pyrng
+cd pyrng
 ```
 ### Installing Prerequisites:
 
@@ -42,11 +42,12 @@ cd src
 ```
 
 After going into src, you can launch the game by entering:
+Windows:
 ```cmd
-python finalrng.py // For Windows
+python finalrng.py
 ```
-or 
 
+Linux: 
 ```bash
 python3 finalrng.py # For Linux
 ```
